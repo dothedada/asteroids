@@ -7,6 +7,9 @@ from constants import (
     ASTEROID_KINDS,
     ASTEROID_SPAWN_RATE,
 )
+from player import Player
+
+player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 
 def main():
@@ -20,26 +23,10 @@ def main():
                 return
 
         screen.fill((0, 0, 0))
+        player.draw(screen)
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000
-
-
-class CircleShapr(pygame.sprite.Sprite):
-    def __init__(self, x, y, radius):
-        if hasattr(self, "containers"):
-            super().__init__(self.containers)
-        else:
-            super().__init__()
-
-        self.position = pygame.Vector2(x, y)
-        self.velocity = pygame.Vector2(0, 0)
-        self.radius = radius
-
-    def draw(self, screen):
-        pass
-
-    def update(self, dt):
-        pass
 
 
 if __name__ == "__main__":
